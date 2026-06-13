@@ -1,0 +1,54 @@
+{
+  "name": "SkillCame - Best Learning and Earning ecosystem",
+  "short_name": "SkillCame",
+  "description": "SkillCame is an advanced AI-powered Learning Management System designed to help students, creators, freelancers, and professionals master modern digital skills.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "background_color": "#0a0a0a",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["education", "productivity", "technology"],
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/skillcame-app-faveicon.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Home",
+      "url": "/",
+      "icons": [{ "src": "/skillcame-app-faveicon.webp", "sizes": "96x96" }]
+    },
+    {
+      "name": "Courses",
+      "url": "/user/courses",
+      "icons": [{ "src": "/skillcame-app-faveicon.webp", "sizes": "96x96" }]
+    },
+    {
+      "name": "AI Marketplace",
+      "url": "/user/marketplace",
+      "icons": [{ "src": "/skillcame-app-faveicon.webp", "sizes": "96x96" }]
+    },
+    {
+      "name": "AI Chat Assistant",
+      "url": "/ai-chat",
+      "icons": [{ "src": "/skillcame-app-faveicon.webp", "sizes": "96x96" }]
+    },
+    {
+      "name": "Certificates",
+      "url": "/user/certificates",
+      "icons": [{ "src": "/skillcame.webp", "sizes": "96x96" }]
+    }
+  ]
+}

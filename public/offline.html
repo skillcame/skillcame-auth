@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You are Offline - SkillCame</title>
+  <link rel="icon" type="image/png" href="/skillcame-app-faveicon.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #050505;
+      --card-bg: #0a0a0a;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --lime: #a3e635;
+      --text-main: #ffffff;
+      --text-muted: #9ca3af;
+      --border-color: rgba(99, 102, 241, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* Cosmic Background Accents */
+    .bg-glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(5, 5, 5, 0) 70%);
+      filter: blur(40px);
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 480px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Logo & Icon Area */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    .logo-accent {
+      color: var(--lime);
+    }
+
+    .offline-graphic {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 28px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .signal-icon {
+      width: 64px;
+      height: 64px;
+      color: var(--accent);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    .slash {
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: #ef4444;
+      border-radius: 2px;
+      transform: rotate(-45deg);
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #ef4444;
+      box-shadow: 0 0 8px #ef4444;
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, rgba(99, 102, 241, 0.8) 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .connection-tips {
+      margin-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 24px;
+      text-align: left;
+    }
+
+    .tips-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .tips-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tips-item {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tips-item-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--lime);
+    }
+
+    footer {
+      margin-top: 32px;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.6;
+        transform: scale(0.98);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.02);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+
+  <div class="container">
+    <div class="logo-container">
+      <img src="/skillcame-app-faveicon.webp" alt="SkillCame Logo" class="logo-img" />
+      <span class="logo-text">SkillCame<span class="logo-accent">.</span></span>
+    </div>
+
+    <div class="offline-graphic">
+      <!-- Wifi Off Icon Built with SVG -->
+      <svg class="signal-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1" />
+      </svg>
+      <div class="slash"></div>
+    </div>
+
+    <div class="status-badge">
+      <div class="status-dot"></div>
+      Offline Mode
+    </div>
+
+    <h1>No Internet Connection</h1>
+    <p>You are currently offline. Check your network cables, modem, router, or mobile data connection and try again.</p>
+
+    <div class="btn-group">
+      <button onclick="window.location.reload();" class="btn btn-primary" id="retry-button">
+        <svg style="width: 16px; height: 16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+        </svg>
+        Retry Connection
+      </button>
+      <button onclick="history.back();" class="btn btn-secondary">
+        Go Back
+      </button>
+    </div>
+
+    <div class="connection-tips">
+      <div class="tips-title">Troubleshooting Tips</div>
+      <ul class="tips-list">
+        <li class="tips-item"><div class="tips-item-dot"></div> Verify your WiFi is active</li>
+        <li class="tips-item"><div class="tips-item-dot"></div> Disable & re-enable Airplane mode</li>
+        <li class="tips-item"><div class="tips-item-dot"></div> Check database or server state</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    &copy; <span id="year">2026</span> SKILLCAME. ALL RIGHTS RESERVED.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Dynamically check online status and update UI
+    window.addEventListener('online', () => {
+      const btn = document.getElementById('retry-button');
+      if (btn) {
+        btn.innerHTML = 'Connecting...';
+        btn.style.background = 'linear-gradient(135deg, var(--lime) 0%, #84cc16 100%)';
+        btn.style.color = '#000000';
+      }
+      setTimeout(() => {
+        window.location.reload();
+      }, 800);
+    });
+  </script>
+</body>
+</html>

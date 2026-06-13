@@ -1,0 +1,6 @@
+{
+  "name": "SkillCame AI LMS",
+  "description": "SkillCame is an AI-powered LMS platform offering professional courses and learning resources.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
